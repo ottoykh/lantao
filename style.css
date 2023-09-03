@@ -1,0 +1,95 @@
+.container {
+  max-width: 98%;
+  margin: 0 auto;
+  padding: 1%;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  margin-bottom: 0.5%;
+}
+
+.logo-img {
+  display: block;
+  height: 38px;
+}
+
+.bus-select {
+  margin-bottom: 1%;
+}
+
+.map-section {
+  position: relative;
+}
+
+#map {
+  height: 50vh;
+  margin-bottom: 0.5%;
+}
+
+#estimated-arrival {
+  background-color: #f5f5f5;
+  border-radius: 1.5%;
+  padding-top: 0.2%;
+  padding-bottom: 0.2%;
+}
+
+#estimated-arrival h3 {
+  margin: 0.5% 0;
+  padding-left: 1%;
+}
+
+#estimated-arrival p {
+  margin: 0.5% 0;
+  padding-left: 1%;
+}
+
+.stop-list-item {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  border-bottom: 1px solid #ccc;
+}
+
+.stop-list-item:last-child {
+  border-bottom: none;
+}
+
+.stop-list-item h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.stop-list-item span {
+  margin: 0;
+  padding: 0;
+}
+
+@media only screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) {
+  .header {
+    font-size: 5.5vw;
+  }
+
+  .logo-img {
+    height: 6.5vw;
+  }
+
+  .bus-select {
+    margin-bottom: 2.5%;
+  }
+
+  #estimated-arrival h3 {
+    font-size: 5.5vw;
+  }
+
+  #estimated-arrival p {
+    font-size: 5vw;
+  }
+
+  .stop-list-item h4 {
+    font-size: 6.5vw;
+  }
+
+  .stop-list-item span {
+    font-size: 5.5vw;
+  }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lantau Bus Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <img class="logo-img" src="https://www.nlb.com.hk/assets/dist/images/logo.png" alt="Lantau Bus Logo">
+    </div>
+    <div class="bus-select">
+      <label for="route-select">Select Bus Route</label>
+      <select id="route-select" onchange="fetchMap()">
+        <option value="">Choose the bus route</option>
+        <option value="1">1 梅窩碼頭 > 大澳</option>
+        <option value="2">1 大澳 > 梅窩碼頭</option>
+        <option value="3">1R 紅磡 (紅鸞道) > 昂坪</option>
+        <option value="5">2 昂坪 > 梅窩碼頭</option>
+        <option value="4">2 梅窩碼頭 > 昂坪</option>
+        <option value="8">3M 梅窩 (貝澳開) > 東涌站巴士總站</option>
+        <option value="7">3M 梅窩碼頭 > 東涌站巴士總站</option>
+        <option value="6">3M 東涌站巴士總站 > 梅窩碼頭</option>
+        <option value="12">4 梅窩碼頭 > 塘福 (至水口)</option>
+        <option value="9">4 梅窩碼頭 > 塘福</option>
+        <option value="10">4 塘福 > 梅窩碼頭</option>
+        <option value="11">4 塘福 (水口開) > 梅窩碼頭</option>
+        <option value="72">7S 禮智園墳場 > 梅窩碼頭</option>
+        <option value="70">7S 梅窩碼頭 > 禮智園墳場</option>
+        <option value="13">11 東涌站巴士總站 > 大澳</option>
+        <option value="14">11 大澳 > 東涌站巴士總站</option>
+        <option value="18">11 大澳 (水口開) > 東涌站巴士總站</option>
+        <option value="17">11 大澳 (沙咀開) > 東涌站巴士總站</option>
+        <option value="15">11A 東涌站巴士總站 > 石壁</option>
+        <option value="16">11A 石壁 > 東涌站巴士總站</option>
+        <option value="20">21 大澳 > 昂坪</option>
+        <option value="19">21 昂坪 > 大澳</option>
+        <option value="21">23 東涌達東路巴士總站 > 昂坪</option>
+        <option value="22">23 昂坪 > 東涌達東路巴士總站</option>
+        <option value="24">34 石門甲 > 東涌達東路巴士總站</option>
+        <option value="23">34 東涌達東路巴士總站 > 石門甲</option>
+        <option value="71">34S 東涌達東路巴士總站 > 十八區墳場 (循環線)</option>
+        <option value="102">36 迪士尼樂園 > 東涌達東路巴士總站</option>
+        <option value="101">36 東涌達東路巴士總站 > 迪士尼樂園</option>
+        <option value="100">36X 滿東邨 > 迪士尼樂園</option>
+        <option value="78">37 逸東邨 > 迎東邨</option>
+        <option value="80">37 迎東邨 > 逸東邨</option>
+        <option value="104">37A 裕雅苑 > 東涌站巴士總站 (循環線)</option>
+        <option value="96">37H 迎東邨 > 北大嶼山醫院 (循環線)</option>
+        <option value="82">37M 迎東邨 > 東涌站巴士總站 (循環線)</option>
+        <option value="63">37P 逸東邨 (裕東路) > 映灣園</option>
+        <option value="75">37S 東涌發展碼頭 > 東涌站巴士總站</option>
+        <option value="30">38 逸東邨 > 東涌站巴士總站 (循環線)</option>
+        <option value="29">38X 逸東邨 (裕東路) > 東涌站巴士總站 (循環線)</option>
+        <option value="95">39M 東涌站巴士總站 > 滿東邨 (循環線)</option>
+        <option value="90">A35 梅窩碼頭 > 大橋香港口岸</option>
+        <option value="91">A35 大橋香港口岸 > 梅窩碼頭</option>
+        <option value="37">B2 元朗港鐵站 > 深圳灣口岸</option>
+        <option value="38">B2 深圳灣口岸 > 元朗港鐵站</option>
+        <option value="33">B2P 天水圍 (天慈邨) > 深圳灣口岸</option>
+        <option value="34">B2P 深圳灣口岸 > 天水圍 (天慈邨)</option>
+        <option value="36">B2X 深圳灣口岸 > 天水圍 (天耀邨)</option>
+        <option value="35">B2X 天水圍 (天耀邨) > 深圳灣口岸</option>
+        <option value="87">B4 大橋香港口岸 > 機場 (客運大樓) (循環線)</option>
+        <option value="88">B6 大橋香港口岸 > 滿東邨</option>
+        <option value="89">B6 滿東邨 > 大橋香港口岸</option>
+        <option value="40">N1 梅窩碼頭 > 大澳</option>
+        <option value="93">N35 大橋香港口岸 > 梅窩碼頭</option>
+        <option value="92">N35 梅窩碼頭 > 大橋香港口岸</option>
+        <option value="86">N37 迎東邨 > 東涌站巴士總站 (循環線)</option>
+        <option value="45">N38 東涌站巴士總站 > 逸東邨</option>
+        <option value="44">N38 逸東邨 > 東涌站巴士總站</option>
+      </select>
+    </div>
+    <div class="map-section">
+      <div id="estimated-arrival"></div>
+      <div id="map"></div>
+      <div id="stop-list"></div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script type="text/javascript"></script>
+</body>
+
+</html>
